@@ -1,0 +1,314 @@
+/* ==========================================================================
+   FOLHA DE ESTILO EXTERNA: estilo.css
+   Projeto: Meu Portal de Entretenimento Digital
+   Autor: Gabriel Morais Marcondes
+   Disciplina: Desenvolvimento de Sistemas I - Agenda 13 (CSS e Flexbox)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CONFIGURAÇÕES GERAIS E VARIÁVEIS DE CORES
+   Tema: Editorial Quente & Indie (Inspirado em plataformas como Letterboxd e Pitchfork)
+   Foge do azul genérico e traz uma estética acolhedora de revista cultural.
+   -------------------------------------------------------------------------- */
+:root {
+    --cor-fundo-pagina: #141210;       /* Café espresso escuro e elegante */
+    --cor-fundo-card: #1e1a17;         /* Grafite quente amadeirado */
+    --cor-fundo-item: #28231f;         /* Superfície dos cards internos */
+    --cor-borda-card: #3a322c;         /* Borda terrosa suave */
+    --cor-texto-principal: #f5f2eb;    /* Branco marfim / papel envelhecido */
+    --cor-texto-secundario: #aba193;   /* Areia fosco para descrições */
+    --cor-fonte-credito: #c9bfb2;      /* Tom claro e legível para legendas */
+
+    /* Cores temáticas por seção (IDs) - Paleta Indie/Editorial */
+    --tema-filmes: #e05638;            /* Laranja terracota (estilo Letterboxd) */
+    --tema-musica: #d97706;            /* Âmbar mostarda vintage (estilo vinil clássico) */
+    --tema-games: #84cc16;             /* Verde oliva / sálvia contemporâneo */
+    
+    --sombra-card: 0 10px 25px -5px rgba(0, 0, 0, 0.55), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+}
+
+/* Configura o box-sizing universal para facilitar o dimensionamento */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Rolagem suave nativa para links âncora */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--cor-fundo-pagina);
+    color: var(--cor-texto-principal);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --------------------------------------------------------------------------
+   2. CABEÇALHO DO PORTAL (HEADER)
+   -------------------------------------------------------------------------- */
+#cabecalho-principal {
+    text-align: center;
+    padding: 2.75rem 1rem 1.75rem 1rem;
+    background: linear-gradient(180deg, #241e1a 0%, #141210 100%);
+    border-bottom: 1px solid var(--cor-borda-card);
+}
+
+.titulo-portal {
+    font-family: 'Georgia', 'Playfair Display', 'Times New Roman', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, #f5f2eb, #fde68a, #f97316);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitulo-portal {
+    color: var(--cor-texto-secundario);
+    font-size: 1.05rem;
+    max-width: 700px;
+    margin: 0 auto 1.25rem auto;
+    font-weight: 400;
+}
+
+/* Menu de navegação por âncoras inteligente (Smart Navbar)
+   Usa position: sticky com efeito de vidro (blur) e desliza para fora/dentro */
+#menu-navegacao {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    padding: 0.85rem 1rem;
+    margin-top: 1rem;
+    background-color: rgba(20, 18, 16, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--cor-borda-card);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease;
+}
+
+/* Classe dinâmica acionada pelo script ao rolar para baixo */
+#menu-navegacao.menu-oculto {
+    transform: translateY(-100%);
+    box-shadow: none;
+}
+
+/* Sombra elegante quando o menu está fixo navegando pela página */
+#menu-navegacao.menu-flutuante {
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.6);
+}
+
+.link-ancora {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1.1rem;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--cor-borda-card);
+    border-radius: 9999px;
+    color: var(--cor-texto-principal);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+.link-ancora:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Destaque individual nas âncoras combinando com a paleta Indie/Editorial */
+.link-ancora[href="#filmes-series"]:hover {
+    border-color: var(--tema-filmes);
+    color: #ff8a65;
+}
+
+.link-ancora[href="#musica-podcasts"]:hover {
+    border-color: var(--tema-musica);
+    color: #fbbf24;
+}
+
+.link-ancora[href="#games-tecnologia"]:hover {
+    border-color: var(--tema-games);
+    color: #a3e635;
+}
+
+/* --------------------------------------------------------------------------
+   3. CONTAINER FLEXBOX PRINCIPAL (LAYOUT DE TRÊS COLUNAS LADO A LADO)
+   Aqui aplicamos o modelo Flexbox exigido na atividade.
+   -------------------------------------------------------------------------- */
+#conteiner-secoes {
+    display: flex;                   /* Ativa o Flexbox */
+    flex-direction: row;             /* Posiciona as 3 seções lado a lado (horizontal) */
+    flex-wrap: wrap;                 /* Permite quebra de linha em telas menores */
+    gap: 1.75rem;                    /* Espaçamento uniforme entre as colunas */
+    max-width: 1400px;
+    width: 95%;
+    margin: 2rem auto;               /* Centraliza o container na página */
+    padding: 0 1rem;
+    flex: 1;                         /* Ocupa o espaço vertical disponível */
+}
+
+/* --------------------------------------------------------------------------
+   4. CARDS DAS SEÇÕES (PADRONIZAÇÃO COM CLASSES)
+   Cada seção tem a classe .secao-coluna compartilhando o mesmo formato base.
+   -------------------------------------------------------------------------- */
+.secao-coluna {
+    flex: 1 1 340px;                 /* Flex grow: 1, shrink: 1, base: 340px (colunas proporcionais) */
+    background-color: var(--cor-fundo-card);
+    border-radius: 14px;
+    border: 1px solid var(--cor-borda-card);
+    padding: 1.5rem;
+    box-shadow: var(--sombra-card);
+    display: flex;
+    flex-direction: column;
+    scroll-margin-top: 2rem;         /* Espaço de respiro no topo após a rolagem da âncora */
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.secao-coluna:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   5. TÍTULOS DAS SEÇÕES (CLASSES E IDENTIFICADORES - IDs)
+   Utilizamos a classe comum .titulo-secao para alinhamento e fonte,
+   e IDs específicos (#filmes-series, #musica-podcasts, #games-tecnologia)
+   para personalizar a cor e o ícone temático de cada uma.
+   -------------------------------------------------------------------------- */
+.titulo-secao {
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Personalização por ID conforme os requisitos da atividade */
+#filmes-series .titulo-secao {
+    color: var(--tema-filmes);
+    border-color: var(--tema-filmes);
+}
+
+#musica-podcasts .titulo-secao {
+    color: var(--tema-musica);
+    border-color: var(--tema-musica);
+}
+
+#games-tecnologia .titulo-secao {
+    color: var(--tema-games);
+    border-color: var(--tema-games);
+}
+
+/* --------------------------------------------------------------------------
+   6. ARTIGOS / CARDS INTERNOS COM IMAGEM E TEXTO
+   -------------------------------------------------------------------------- */
+.item-card {
+    background-color: var(--cor-fundo-item);
+    border: 1px solid var(--cor-borda-card);
+    border-radius: 10px;
+    padding: 1.1rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-card:last-child {
+    margin-bottom: 0;
+}
+
+.subtitulo-item {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. ESTILIZAÇÃO E PADRONIZAÇÃO DAS IMAGENS E FONTES/CRÉDITOS
+   A classe .imagem-portal padroniza o tamanho e ajuste das imagens.
+   A classe .fonte-imagem padroniza a tipografia da legenda/crédito da imagem.
+   -------------------------------------------------------------------------- */
+.figura-portal {
+    margin: 0.5rem 0 0.75rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.imagem-portal {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;               /* Mantém a proporção sem distorcer */
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.imagem-portal:hover {
+    filter: brightness(1.08);
+}
+
+/* Classe específica para padronizar as fontes/créditos das imagens */
+.fonte-imagem {
+    font-size: 0.75rem;              /* Fonte menor e discreta para a legenda */
+    font-style: italic;
+    color: var(--cor-fonte-credito); /* Padronização de cor com contraste acessível */
+    margin-top: 0.35rem;
+    text-align: right;
+    display: block;
+}
+
+/* Pequenos textos explicativos (<p>) */
+.texto-explicativo {
+    font-size: 0.92rem;
+    color: var(--cor-texto-secundario);
+    text-align: justify;
+    line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   8. RODAPÉ DO PORTAL (FOOTER)
+   -------------------------------------------------------------------------- */
+#rodape-principal {
+    margin-top: auto;
+    background-color: #0c0a09;
+    border-top: 1px solid var(--cor-borda-card);
+    padding: 1.75rem 1rem;
+    text-align: center;
+    color: var(--cor-texto-secundario);
+    font-size: 0.88rem;
+}
+
+/* --------------------------------------------------------------------------
+   9. RESPONSIVIDADE (MEDIA QUERY)
+   Garante que em telas estreitas (smartphones) o Flexbox reorganize em coluna.
+   -------------------------------------------------------------------------- */
+@media (max-width: 820px) {
+    #conteiner-secoes {
+        flex-direction: column;      /* Em telas pequenas, seções empilham verticalmente */
+        padding: 0;
+    }
+    
+    .secao-coluna {
+        flex: 1 1 100%;
+    }
+    
+    .titulo-portal {
+        font-size: 1.8rem;
+    }
+}

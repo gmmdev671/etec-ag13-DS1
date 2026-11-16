@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portal de Entretenimento Digital</title>
+
+    <!-- =====================================================================
+         CSS EXTERNO 1: CSS Reset de Eric Meyer
+         Obrigatório vincular ANTES da folha de estilo principal
+         ===================================================================== -->
+    <link rel="stylesheet" href="reset.css">
+
+    <!-- =====================================================================
+         CSS EXTERNO 2: Folha de estilo principal (estilo.css)
+         Contém as regras de layout, Flexbox, cores e tipografia
+         ===================================================================== -->
+    <link rel="stylesheet" href="estilo.css">
+
+    <!-- =====================================================================
+         CSS INTERNO (Segundo tipo exigido): Aplicado na tag <style> dentro de <head>
+         Estiliza elementos específicos da página, como o badge comemorativo e destaques
+         ===================================================================== -->
+    <style>
+        /* CSS Interno: Badge de versão no topo da página harmonizado com a estética Indie/Editorial */
+        .tag-destaque-interno {
+            display: inline-block;
+            background-color: #382516; /* Café terroso/mogno */
+            color: #fde68a;            /* Âmbar claro */
+            padding: 5px 14px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            border-radius: 9999px;
+            margin-bottom: 0.85rem;
+            border: 1px solid #78350f;
+        }
+
+        /* Efeito de destaque no hover de elementos internos com brilho terracota */
+        .destaque-hover {
+            transition: box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+        .destaque-hover:hover {
+            box-shadow: 0 4px 16px rgba(224, 86, 56, 0.2);
+            border-color: rgba(224, 86, 56, 0.45);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO DO PORTAL -->
+    <header id="cabecalho-principal">
+        <span class="tag-destaque-interno">Agenda 13 &bull; Desenvolvimento de Sistemas I</span>
+        <h1 class="titulo-portal">Meu Portal de Entretenimento Digital</h1>
+        <p class="subtitulo-portal">
+            Seu guia interativo com as melhores novidades sobre produções audiovisuais, podcasts imersivos e inovações no universo gamer e tecnológico.
+        </p>
+    </header>
+
+    <!-- Menu de Navegação Inteligente (Smart Navbar)
+         Fica fixo no topo com efeito vidro e desliza ao rolar a página -->
+    <nav id="menu-navegacao" aria-label="Navegação rápida por seções">
+        <a href="#filmes-series" class="link-ancora">🎬 Filmes e Séries</a>
+        <a href="#musica-podcasts" class="link-ancora">🎧 Música e Podcasts</a>
+        <a href="#games-tecnologia" class="link-ancora">🎮 Games e Tecnologia</a>
+    </nav>
+
+    <!-- =====================================================================
+         CONTAINER FLEXBOX: Organiza as três seções principais lado a lado
+         ===================================================================== -->
+    <main id="conteiner-secoes">
+
+        <!-- =================================================================
+             SEÇÃO 1: FILMES E SÉRIES
+             Identificada pelo ID #filmes-series e padronizada pela classe .secao-coluna
+             ================================================================= -->
+        <section id="filmes-series" class="secao-coluna">
+            <h2 class="titulo-secao">🎬 Filmes e Séries</h2>
+
+            <!-- Card 1: Cinema e Streaming -->
+            <article class="item-card destaque-hover">
+                <h3 class="subtitulo-item">O Cinema e as Grandes Telas</h3>
+                <figure class="figura-portal">
+                    <img class="imagem-portal" src="imagens/cinema.jpg" alt="Sala de cinema moderna com iluminação vermelha suave e poltronas confortáveis">
+                    <figcaption class="fonte-imagem">Fonte da imagem: Unsplash (Banco de Imagens Livre)</figcaption>
+                </figure>
+                <p class="texto-explicativo">
+                    O cinema continua sendo a experiência suprema de imersão narrativa. Com o avanço das projeções a laser e sistemas de som tridimensional como Dolby Atmos, assistir a um longa-metragem tornou-se um espetáculo sensorial único para os amantes da sétima arte.
+                </p>
+            </article>
+
+            <!-- Card 2: Séries e Produções Originais -->
+            <article class="item-card destaque-hover">
+                <h3 class="subtitulo-item">A Revolução das Maratonas</h3>
+                <figure class="figura-portal">
+                    <img class="imagem-portal" src="imagens/series.jpg" alt="Tela de TV transmitindo série dramática em ambiente acolhedor">
+                    <figcaption class="fonte-imagem">Fonte da imagem: Unsplash (Banco de Imagens Livre)</figcaption>
+                </figure>
+                <p class="texto-explicativo">
+                    Plataformas de streaming transformaram o consumo de histórias episódicas. Roteiros cinematográficos e arcos complexos de personagens tornaram as séries o formato preferido do público contemporâneo para entretenimento doméstico.
+                </p>
+            </article>
+
+            <!-- Card 3: Produção Audiovisual -->
+            <article class="item-card destaque-hover">
+                <h3 class="subtitulo-item">Direção e Bastidores</h3>
+                <figure class="figura-portal">
+                    <img class="imagem-portal" src="imagens/claquete.jpg" alt="Claquete cinematográfica clássica em set de filmagem">
+                    <figcaption class="fonte-imagem">Fonte da imagem: Unsplash (Banco de Imagens Livre)</figcaption>
+                </figure>
+                <p class="texto-explicativo">
+                    Por trás de cada cena inesquecível há o trabalho minucioso de diretores, iluminadores e editores. A tecnologia digital facilitou a produção independente e expandiu as fronteiras criativas.
+                </p>
+            </article>
+        </section>
+
+        <!-- =================================================================
+             SEÇÃO 2: MÚSICA E PODCASTS
+             Identificada pelo ID #musica-podcasts e padronizada pela classe .secao-coluna
+             ================================================================= -->
+        <section id="musica-podcasts" class="secao-coluna">
+            <h2 class="titulo-secao">🎧 Música e Podcasts</h2>
+
+            <!-- Card 1: Áudio de Alta Fidelidade -->
+            <article class="item-card destaque-hover">
+                <h3 class="subtitulo-item">Experiência Musical Imersiva</h3>
+                <figure class="figura-portal">
+                    <img class="imagem-portal" src="imagens/musica.jpg" alt="Fones de ouvido profissionais sobre superfície escura">
+                    <figcaption class="fonte-imagem">Fonte da imagem: Unsplash (Banco de Imagens Livre)</figcaption>
+                </figure>
+                <p class="texto-explicativo">
+                    O streaming em alta definição (lossless) e os algoritmos de recomendação musical trouxeram uma nova era sonora. Ouvir música agora conecta descobertas globais instantâneas à mais pura fidelidade acústica.
+                </p>
+            </article>
+
+            <!-- Card 2: Podcasts e Conteúdo em Voz -->
+            <article class="item-card destaque-hover">
+                <h3 class="subtitulo-item">A Voz que Informa e Conecta</h3>
+                <figure class="figura-portal">
+                    <img class="imagem-portal" src="imagens/podcast.jpg" alt="Microfone condensador de estúdio com iluminação ambiente">
+                    <figcaption class="fonte-imagem">Fonte da imagem: Unsplash (Banco de Imagens Livre)</figcaption>
+                </figure>
+                <p class="texto-explicativo">
+                    Os podcasts democratizaram as conversas aprofundadas, o jornalismo investigativo e o entretenimento sob demanda. Seja no trânsito ou no trabalho, o conteúdo falado se consolidou como companhia indispensável.
+                </p>
+            </article>
+
+            <!-- Card 3: Festivais e Apresentações ao Vivo -->
+            <article class="item-card destaque-hover">
+                <h3 class="subtitulo-item">Shows e Festivais Ao Vivo</h3>
+                <figure class="figura-portal">
+                    <img class="imagem-portal" src="imagens/show.jpg" alt="Multidão animada e luzes brilhantes em festival musical noturno">
+                    <figcaption class="fonte-imagem">Fonte da imagem: Unsplash (Banco de Imagens Livre)</figcaption>
+                </figure>
+                <p class="texto-explicativo">
+                    A energia coletiva dos grandes festivais de música reflete a conexão humana insubstituível. Efeitos visuais sincronizados e engenharia de áudio moderna elevam a experiência ao ápice da celebração artística.
+                </p>
+            </article>
+        </section>
+
+        <!-- =================================================================
+             SEÇÃO 3: GAMES E TECNOLOGIA
+             Identificada pelo ID #games-tecnologia e padronizada pela classe .secao-coluna
+             ================================================================= -->
+        <section id="games-tecnologia" class="secao-coluna">
+            <h2 class="titulo-secao">🎮 Games e Tecnologia</h2>
+
+            <!-- Card 1: Consoles e Jogos Eletrônicos -->
+            <article class="item-card destaque-hover">
+                <h3 class="subtitulo-item">A Próxima Geração de Jogos</h3>
+                <figure class="figura-portal">
+                    <img class="imagem-portal" src="imagens/games.jpg" alt="Controle de videogame moderno sem fio com iluminação temática">
+                    <figcaption class="fonte-imagem">Fonte da imagem: Unsplash (Banco de Imagens Livre)</figcaption>
+                </figure>
+                <p class="texto-explicativo">
+                    A indústria de games ultrapassou os números de faturamento do cinema e da música combinados. Com gráficos realistas em 4K e ray tracing em tempo real, os consoles oferecem experiências cinematográficas interativas.
+                </p>
+            </article>
+
+            <!-- Card 2: Setup Gamer e Hardware -->
+            <article class="item-card destaque-hover">
+                <h3 class="subtitulo-item">Hardware de Alta Performance</h3>
+                <figure class="figura-portal">
+                    <img class="imagem-portal" src="imagens/setup.jpg" alt="Computador gamer com iluminação RGB e múltiplos monitores de alta taxa de atualização">
+                    <figcaption class="fonte-imagem">Fonte da imagem: Unsplash (Banco de Imagens Livre)</figcaption>
+                </figure>
+                <p class="texto-explicativo">
+                    PCs potentes, monitores ultrarrápidos e periféricos ergonômicos definem os setups dedicados aos e-Sports e à produtividade tecnológica. A customização virou símbolo de identidade cultural digital.
+                </p>
+            </article>
+
+            <!-- Card 3: Realidade Virtual e IA -->
+            <article class="item-card destaque-hover">
+                <h3 class="subtitulo-item">Realidade Virtual e Novas Fronteiras</h3>
+                <figure class="figura-portal">
+                    <img class="imagem-portal" src="imagens/vr.jpg" alt="Óculos de realidade virtual imersiva sobre fundo com iluminação futurista">
+                    <figcaption class="fonte-imagem">Fonte da imagem: Unsplash (Banco de Imagens Livre)</figcaption>
+                </figure>
+                <p class="texto-explicativo">
+                    Dispositivos de realidade mista e mundos virtuais proporcionam uma imersão física nunca antes vista. Aliados à inteligência artificial generativa, inauguram uma nova etapa para simuladores e interações digitais.
+                </p>
+            </article>
+        </section>
+
+    </main>
+
+    <!-- =====================================================================
+         RODAPÉ DO PORTAL COM CSS INLINE (Primeiro tipo exigido)
+         O atributo style="" aplica estilização direta inline no elemento span,
+         cumprindo expressamente a exigência técnica da atividade.
+         ===================================================================== -->
+    <footer id="rodape-principal">
+        <p>
+            &copy; 2026 <strong>Meu Portal de Entretenimento Digital</strong> &bull; ETEC - Desenvolvimento de Sistemas I (Agenda 13)
+        </p>
+        <!-- CSS Inline aplicado conforme solicitado na atividade -->
+        <p style="margin-top: 10px; font-size: 0.82rem; color: #d97706; letter-spacing: 0.5px;">
+            Desenvolvido por <strong>Gabriel Morais Marcondes</strong> &bull; <span style="background-color: #28231f; color: #f5f2eb; padding: 3px 10px; border-radius: 4px; border: 1px solid #443a33;">Estilo CSS Inline aplicado aqui</span>
+        </p>
+    </footer>
+
+    <!-- =====================================================================
+         SCRIPT WEB (Atende à Habilidade 3.2: "Utilizar linguagem de script para Web")
+         Detecta a direção do scroll: esconde o menu ao rolar para baixo e
+         revela suavemente o menu ao rolar para cima.
+         ===================================================================== -->
+    <script>
+        let ultimoScroll = 0;
+        const menu = document.getElementById('menu-navegacao');
+
+        window.addEventListener('scroll', () => {
+            const scrollAtual = window.pageYOffset || document.documentElement.scrollTop;
+
+            // Adiciona sombra quando descolar do topo
+            if (scrollAtual > 50) {
+                menu.classList.add('menu-flutuante');
+            } else {
+                menu.classList.remove('menu-flutuante');
+            }
+
+            // Detecta a direção da rolagem
+            if (scrollAtual > ultimoScroll && scrollAtual > 150) {
+                // Rolando para BAIXO: esconde o menu com a classe CSS
+                menu.classList.add('menu-oculto');
+            } else {
+                // Rolando para CIMA: revela o menu
+                menu.classList.remove('menu-oculto');
+            }
+
+            // Atualiza a posição anterior (garantindo que não seja negativa no Safari/iOS)
+            ultimoScroll = Math.max(0, scrollAtual);
+        });
+    </script>
+
+</body>
+</html>
