@@ -72,11 +72,11 @@ GabrielMoraisMarcondes_Ag13_DS_I_REC/
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
+   git clone https://github.com/gmmdev671/etec-ag13-DS1.git
    ```
 2. Acesse a pasta do projeto:
    ```bash
-   cd SEU-REPOSITORIO
+   cd etec-ag13-DS1
    ```
 3. Abra o arquivo `portal.html` ou `index.html` em qualquer navegador web (Google Chrome, Microsoft Edge, Mozilla Firefox).
 
